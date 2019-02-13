@@ -1,0 +1,22 @@
+<% include partials/_header.ejs %>
+
+<div class="container">
+
+  <h2><%= title %></h2>
+
+  <form action="/clientAccount" method="post">
+
+    <div class="form-group">
+      <label for="customer">Account Holder Last Name</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="customer" placeholder="Create account owner" required autofocus="required"/>
+        <small id="userHelp" class="form-text text-muted">We'll never share your data.</small>
+      </div>
+    </div>
+
+    <button type="submit" value="clientAccount" class="btn btn-primary">Register</button>
+
+  </form>
+</div>
+
+<% include partials/_footer %>
