@@ -1,11 +1,25 @@
 const mongoose = require('mongoose');
-let dbURI = process.env.DB_localURI;
+const dotenv = require('dotenv');
 
-// if (process.env.NODE_ENV === 'production') {
-//   dbURI = process.env.DB_atlasURI;
-// }
+// if dotenv = development send debug messages to console
+if (process.env.NODE_ENV === 'development') {
+  console.log('Debugging');
+  mongoose.set('debug', true);
+}
+
 // added qualifiers to stop mongoose deprecation warnings
-mongoose.connect(dbURI, { useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
+mongoose.set('useNewURLParser', true);
+// run validators on update
+mongoose.set('runValidators', true);
+
+// var dbURI = process.env.DB_localURI;
+
+if (process.env.NODE_ENV === 'production') {
+  var dbURI = process.env.DB_atlasURI || process.env.DB_localURI;
+}
+
+mongoose.connect(dbURI);
 mongoose.set('useCreateIndex', true);
 
 mongoose.connection.on('connected', () => {
