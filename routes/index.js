@@ -29,24 +29,7 @@ router.post('/bankingtest', function (req, res, next) {
   let account = req.body.account;
   let action = req.body.action;
   let amount = (req.body.amount);
-  console.log(` name: ${customer}`);
-  let type0 = typeof (account);
-  let type1 = typeof (action);
-  let type2 = typeof (amount);
-
-  console.log(`typeof: ${type0}`);
-  console.log(`typeof: ${type1}`);
-  console.log(`typeof: ${type2}`);
-
-  console.log(` account: ${account}`);
-  console.log(` action: ${action}`);
-  console.log(` amount: ${amount}`);
-  var accountentry =
-  { account: account,
-    action: action,
-    amount: amount };
-  console.log(accountentry.account, accountentry.action, accountentry.amount);
-
+  
   Banking.findOneAndUpdate({ customer: req.body.customer },
     { '$push':
       { 'transaction': {

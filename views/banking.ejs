@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Accounts</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+</head>
+
+<div class="container">
+
+  <h2>
+    <%= title %>
+  </h2>
+
+  <form action="/banking" method="post">
+
+    <div class="form-group">
+      <label for="customer">Last Name</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="lastname" placeholder="Last Name" required autofocus="required" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+          <div class="form-group">
+              <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                  <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+                  <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#datetimepicker1').datetimepicker();
+              $('#datetimepicker').on('change.datetimepicker', function (e) {
+                console.log(e.date);
+              })
+          });
+      </script>
+  </div>
+
+    <div class="form-group"></div>
+    <label for="account">Select Account</label>
+    <div class="col-sm-6">
+      <select class="custom-select custom-select-md mb-3">
+        <option selected>Choose Account</option>
+        <option value="checking">Checking</option>
+        <option value="savings">Savings</option>
+        <option value="investments">Investments</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="action">Transaction</label>
+      <div class="col-sm-6">
+        <select class="custom-select custom-select-md">
+          <option selected>Transaction Type</option>
+          <option value="deposit">Deposit</option>
+          <option value="transfer">Transfer</option>
+          <option value="billpay">Bill Pay</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <div class="col-sm-6">
+        <input type="number" class="form-control" name="amount" placeholder="Amount" required />
+      </div>
+    </div>
+
+    <button type="submit" value="banking" class="btn btn-primary">Complete Transaction</button>
+
+  </form>
+</div>
+
+<script href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  crossorigin="anonymous"></script>
+<script href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+  crossorigin="anonymous"></script>
+</body>
+
+</html>
