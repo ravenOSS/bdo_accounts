@@ -1,9 +1,29 @@
 const mongoose = require('mongoose');
 
-const accountSchema = new mongoose.Schema({
-  account: {type: String}
+const transactionSchema = new mongoose.Schema(
+  [{
+    account: {
+      type: String,
+      enum: ['checking', 'savings', 'investments'],
+      required: true
+    },
+    action: {
+      type: String,
+      enum: ['deposit', 'billpay', 'transfer'],
+      required: true
+    },
+    amount: {
+      type: Number,
+      required: true
+    }
+  }]
+);
+
+const bankingSchema = new mongoose.Schema({
+  customer: {type: String},
+  transaction: [transactionSchema]
 });
 
-let Account = mongoose.model('Account', accountSchema);
+let Banking = mongoose.model('Banking', bankingSchema);
 
-module.exports = Account;
+module.exports = Banking;
